@@ -1,0 +1,20 @@
+{
+  "name": "reveal.js",
+  "version": "3.8.0",
+  "main": [
+    "js/reveal.js",
+    "css/reveal.css"
+  ],
+  "homepage": "http://revealjs.com",
+  "license": "MIT",
+  "description": "The HTML Presentation",
+  "authors": [
+    "Kirill Leogky <kirillmargheriti@gmail.com>"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ]
+}

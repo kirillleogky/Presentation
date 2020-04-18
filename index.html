@@ -1,0 +1,650 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Grid</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>CSS Grid Layout</h1>
+					<p>A presentation about one of the layout system in CSS</p>
+					<p>Created by <a href="https://github.com/kirillleogky">Kirill Leogky</a></p>
+				</section>
+				<section>
+				<section>
+				 <h3>What is the Grid?</h3>
+				 <div class="intro_section">
+					 <div class="">
+  					<h3>❌</h3>
+  				 	<img width="535" height="330" data-src="lib/img/grid-game.png" alt="Grid Game">
+  				 </div>
+           <div class="">
+  					<h3 style="color: #0cf059">&#10003;</h3>
+           	<img width="535" height="330" data-src="lib/img/main-grid.jpg" alt="Grid Wrapper">
+           </div>
+				 </div>
+				</section>
+				<section>
+				 <h3>What is the Grid?</h3>
+				 <div class="intro_section" style="margin-left: -7%">
+					 <img width="285" height="143" data-src="lib/img/History Org.png" alt="History">
+					 <img width="500" height="160" data-src="lib/img/CSS Grid History.png" alt="Grid History">
+					 <img width="285" height="143" data-src="lib/img/History.png" alt="History">
+				 </div>
+				 <a href="https://alistapart.com/article/the-story-of-css-grid-from-its-creators/" class="fragment" style="margin-left: -1%">this article what you need</a>
+				</section>
+				<section>
+					<h3>What is the Grid?</h3>
+					<blockquote cite="https://www.w3.org/TR/css-grid-1/">
+						<img width="225" height="140" align="left" data-src="lib/img/w3c-logo.png" class="w3c" alt="W3C">
+						&ldquo;This CSS module defines a two-dimensional grid-based layout system, optimized for user interface design. In the grid layout model, the children of a grid container can be positioned into arbitrary slots in a predefined flexible or fixed-size layout grid.&rdquo;
+					</blockquote>
+					<h3> </h3>
+					<blockquote cite="https://css-tricks.com/snippets/css/complete-guide-grid/">
+						<img width="300" height="100" align="left" data-src="lib/img/CSS-Tricks-logo.png" class="CSS-Tricks" alt="CSS-Tricks">
+						&ldquo;It is a 2-dimensional layout system, meaning it can handle both columns and rows, unlike flexbox which is largely a 1-dimensional system. &rdquo;
+					</blockquote>
+
+				</section>
+				</section>
+				<section>
+					<section>
+					 <h3>Definitions in CSS Grid Layout</h3>
+					 <div class="fragment">
+						 <p>Grid Lines</p>
+						 <blockquote style="height: 470px">
+							 <img width="500" height="350" class="grid_def" data-src="lib/img/grid lines.png" alt="Grid Lines">
+							 <p style="color: #3210e6">Grid Lines</p> - invisible horizontal and vertical dividing lines, they exist on both sides of a row and column.
+						 </blockquote>
+					 </div>
+					</section>
+					<section>
+					 <h3>Definitions in CSS Grid Layout</h3>
+						 <p>Grid Track</p>
+						 <blockquote style="height: 470px">
+							 <img width="560" height="360" class="grid_def" style="padding-left: 20%;" data-src="lib/img/grid track.png" alt="Grid Track">
+							 <p style="color: #3210e6">Grid Track</p> - space between two adjacent grid lines.
+						 </blockquote>
+					</section>
+					<section>
+					 <h3>Definitions in CSS Grid Layout</h3>
+						 <p>Grid Cell</p>
+						 <blockquote style="height: 470px">
+							 <img width="550" height="350" class="grid_def" style="padding-left: 22%;" data-src="lib/img/grid cell.png" alt="Grid Cell">
+							 <p style="color: #3210e6">Grid Cell</p> - space which is bounded by four grid lines, similar to a table cell.
+						 </blockquote>
+					</section>
+				</section>
+				<section>
+				<section>
+				 <h3>Where To Begin?</h3>
+				 <img width="800" height="330" data-src="https://media.giphy.com/media/3o84sJXOIrnjvlwnF6/giphy.gif" alt="Grid Game">
+				</section>
+				<section>
+				 <h3>Where To Begin?</h3>
+				 <p>grid</p>
+				 <div class="intro_section">
+					 <pre><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+						  display: grid;
+						 }
+					 </code></pre>
+					 <img width="535" height="330" data-src="lib/img/display grid.png" alt="Display Grid">
+				 </div>
+				</section>
+				<section>
+				 <h3>Where To Begin?</h3>
+				 <p>inline-grid</p>
+				 <div class="intro_section">
+					 <pre><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 display: inline-grid;
+						 }
+					 </code></pre>
+					 <img width="195" height="450" data-src="lib/img/display inline-grid.png" class="display_inline_grid" alt="Display Inline Grid">
+				 </div>
+				</section>
+				</section>
+				<section>
+				<section>
+				 <h3>Explicit Grid</h3>
+				 <p>grid-template-columns</p>
+         <p>grid-template-rows</p>
+				 <div class="intro_section fragment">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2,3">
+						 .parent {
+							 grid-template-columns: 60% 40%;
+							 grid-template-rows: 55px 60px;
+						 }
+					 </code></pre>
+					 <img width="450" height="420" data-src="lib/img/grid-tempate.png" alt="Display Inline Grid">
+				 </div>
+				 <a href="https://medium.com/@stasonmars/%D1%87%D1%82%D0%BE-%D1%82%D0%B0%D0%BA%D0%BE%D0%B5-%D0%B5%D0%B4%D0%B8%D0%BD%D0%B8%D1%86%D0%B0-%D0%B3%D0%B8%D0%B1%D0%BA%D0%BE%D1%81%D1%82%D0%B8-fr-%D0%B2-css-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D1%8B%D0%BC-%D0%B8-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%8B%D0%BC-%D1%8F%D0%B7%D1%8B%D0%BA%D0%BE%D0%BC-2a3794c4444" style="font-size: 0.5em" class="fragment">more detail about fraction</a>
+				</section>
+				<section>
+					<h3>Explicit Grid</h3>
+ 				  <p>repeat</p>
+ 				  <div class="intro_section fragment">
+ 					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 grid-template-rows: 20px 20px 20px 20px 20px;
+						 }
+ 					 </code></pre>
+					 <p class="symbol_spaces">=</p>
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 grid-template-rows: repeat(5, 20px);
+						 }
+ 					 </code></pre>
+					 </div>
+				</section>
+        </section>
+				<section>
+				<section>
+					<h3>Naming and Positioning Items by Grid Areas</h3>
+					<p>areas</p>
+					<div class="intro_section">
+						<pre class="template"><code class="css" data-trim data-line-numbers="2-4,7,10,13,16">
+							.parent {
+						  grid-template-areas: "header header"
+                             "content sidebar"
+                             "footer footer";
+							}
+							.blue {
+						  grid-area: header;
+							}
+							.green {
+						  grid-area: content;
+							}
+							.purple {
+						  grid-area: sidebar;
+							}
+							.red {
+						  grid-area: footer;
+							}
+						</code></pre>
+						<img width="500" height="350" data-src="lib/img/grid-template-areas.png" alt="Grid Template Areas" style="margin-left: 15px">
+					</div>
+        </section>
+				<section>
+					<h3>Naming and Positioning Items by Grid Areas</h3>
+					<p>grid-template</p>
+					<div class="intro_section fragment">
+ 					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 grid-template: 60% 40% / 200px;
+						 }
+ 					 </code></pre>
+					 <p class="symbol_spaces">=</p>
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2-4">
+						 .parent {
+							 grid-template-rows: 60% 40%;
+							 grid-template-columns: 200px;
+							 grid-template-areas: none;
+						 }
+ 					 </code></pre>
+					 </div>
+        </section>
+        </section>
+				<section>
+					<h3>Grid Gaps</h3>
+					<div class="intro_section">
+					 <div class="code_container">
+						 <pre><code class="css" data-trim data-line-numbers="2,3">
+							 .parent {
+								 grid-row-gap: 20px;
+								 grid-column-gap: 10%;
+							 }
+						 </code></pre>
+						 <pre><code class="css" data-trim data-line-numbers="2">
+							 .parent {
+								 grid-gap: 20px 10%;
+							 }
+						 </code></pre>
+					 </div>
+					 <img width="600" height="400" data-src="lib/img/grid-gap.png" class="symbol_spaces" alt="Grid Gap">
+					 </div>
+				</section>
+				<section>
+				<section>
+				 <h3>Positioning Items by Grid Line Numbers</h3>
+				 <p>grid-column/row-start/end</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2-5">
+						 .Item1 {
+							 grid-row-start:    2;
+							 grid-row-end:      3;
+							 grid-column-start: 2;
+							 grid-column-end:   3;
+						 }
+					 </code></pre>
+					 <img width="550" height="420" data-src="lib/img/grid-row-column.png" class="symbol_spaces" alt="Grid Row Column Long">
+				 </div>
+				</section>
+				<section>
+					<h3>Positioning Items by Grid Line Numbers</h3>
+					<p>grid-row/column</p>
+					<div class="intro_section">
+					 <div class="code_container">
+						 <pre><code class="css" data-trim data-line-numbers="2,3">
+							 .Item1 {
+								 grid-row:    2;
+								 grid-column: 3 / 4;
+							 }
+						 </code></pre>
+						 <pre><code class="css" data-trim data-line-numbers="2-4">
+							 .Item1 {
+								 grid-row-start:    2;
+								 grid-column-start: 3;
+								 grid-column-end:   4;
+							 }
+						 </code></pre>
+					 </div>
+					 <img width="650" height="400" data-src="lib/img/grid-row-column-short.png" class="symbol_spaces" alt="Grid Row Column Short">
+					 </div>
+				</section>
+				<section>
+					<h3>Positioning Items by Grid Line Numbers</h3>
+					<p>grid-area</p>
+					<div class="intro_section">
+					 <div class="code_container">
+						 <pre><code class="css" data-trim data-line-numbers="2">
+							 .Item1 {
+								 grid-area: 2 / 2 / 3 / 3;
+							 }
+						 </code></pre>
+						 <pre><code class="css" data-trim data-line-numbers="2,3">
+							 .Item1 {
+								 grid-row:    2 / 3;
+								 grid-column: 2 / 3;
+							 }
+						 </code></pre>
+						 <pre><code class="css" data-trim data-line-numbers="2-5">
+							 .Item1 {
+								 grid-row-start:    2;
+								 grid-row-end:      3;
+								 grid-column-start: 2;
+								 grid-column-end:   3;
+							 }
+						 </code></pre>
+					 </div>
+					 <img width="640" height="400" data-src="lib/img/grid-area.png" class="symbol_spaces" alt="Grid Area">
+					 </div>
+				</section>
+				</section>
+				<section>
+				<section>
+				 <h3>Aligning Grid Items (Box Alignment)</h3>
+				 <p>justify-items</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="11">
+						 .parent {
+							 grid-template-rows: 70px 70px;
+							 grid-template-columns: 50% 50%;
+							 grid-template-areas: "content content"
+							                      "content content";
+						 }
+						 .item {
+							 grid-area: content;
+						 }
+						 .parent {
+							 justify-items: start;
+						 }
+					 </code></pre>
+					 <img width="550" height="350" data-src="lib/img/justify-items start.png" class="symbol_spaces" alt="Justify Items Start">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Items (Box Alignment)</h3>
+				 <p>justify-items</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 justify-items: center;
+						 }
+					 </code></pre>
+					 <img width="550" height="350" data-src="lib/img/justify-items center.png" class="symbol_spaces" alt="Justify Items Center">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Items (Box Alignment)</h3>
+				 <p>justify-items</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 justify-items: end;
+						 }
+					 </code></pre>
+					 <img width="550" height="350" data-src="lib/img/justify-items end.png" class="symbol_spaces" alt="Justify Items End">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Items (Box Alignment)</h3>
+				 <p>justify-items</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 justify-items: stretch;
+						 }
+					 </code></pre>
+					 <img width="550" height="350" data-src="lib/img/justify-items stretch.png" class="symbol_spaces" alt="Justify Items Stretch">
+				 </div>
+				</section>
+        </section>
+				<section>
+				<section>
+				 <h3>Aligning Grid Items (Box Alignment)</h3>
+				 <p>align-items</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 align-items: start;
+						 }
+					 </code></pre>
+					 <img width="550" height="350" data-src="lib/img/align-items start.png" class="symbol_spaces" alt="Align Items Start">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Items (Box Alignment)</h3>
+				 <p>align-items</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 align-items: center;
+						 }
+					 </code></pre>
+					 <img width="550" height="350" data-src="lib/img/align-items center.png" class="symbol_spaces" alt="Align Items Center">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Items (Box Alignment)</h3>
+				 <p>align-items</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 align-items: end;
+						 }
+					 </code></pre>
+					 <img width="550" height="350" data-src="lib/img/align-items end.png" class="symbol_spaces" alt="Align Items End">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Items (Box Alignment)</h3>
+				 <p>align-items</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 align-items: stretch;
+						 }
+					 </code></pre>
+					 <img width="550" height="350" data-src="lib/img/align-items stretch.png" class="symbol_spaces" alt="Align Items Stretch">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Items (Box Alignment)</h3>
+				 <p>align-items + justify-items</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2,3">
+						 .parent {
+							 justify-items: center;
+							 align-items: center;
+						 }
+					 </code></pre>
+					 <img width="550" height="350" data-src="lib/img/align-items + justify-items.png" class="symbol_spaces" alt="Align Items and Justify Items">
+				 </div>
+				</section>
+        </section>
+				<section>
+				<section>
+				 <h3>Aligning Grid Tracks</h3>
+				 <p>justify-content</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="7">
+						 .parent {
+							 width: 100%;
+							 height: 300px;
+							 grid-template-columns: 45px 45px 45px 45px;
+							 grid-template-rows: 45px 45px 45px 45px;
+							 grid-gap: 5px;
+							 justify-content: start;
+						 }
+					 </code></pre>
+					 <img width="500" height="350" data-src="lib/img/justify-content start.png" class="symbol_spaces" alt="Justify Content Start">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Tracks</h3>
+				 <p>justify-content</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 justify-content: end;
+						 }
+					 </code></pre>
+					 <img width="500" height="350" data-src="lib/img/justify-content end.png" class="symbol_spaces" alt="Justify Content End">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Tracks</h3>
+				 <p>justify-content</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 justify-content: center;
+						 }
+					 </code></pre>
+					 <img width="500" height="350" data-src="lib/img/justify-content center.png" class="symbol_spaces" alt="Justify Content Center">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Tracks</h3>
+				 <p>justify-content</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 justify-content: space-around;
+						 }
+					 </code></pre>
+					 <img width="500" height="350" data-src="lib/img/justify-content space-around.png" class="symbol_spaces" alt="Justify Content Space Around">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Tracks</h3>
+				 <p>justify-content</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 justify-content: space-between;
+						 }
+					 </code></pre>
+					 <img width="500" height="350" data-src="lib/img/justify-content space-between.png" class="symbol_spaces" alt="Justify Content Space Between">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Tracks</h3>
+				 <p>justify-content</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 justify-content: space-evenly;
+						 }
+					 </code></pre>
+					 <img width="500" height="350" data-src="lib/img/justify-content space-evenly.png" class="symbol_spaces" alt="Justify Content Space Evenly">
+				 </div>
+				</section>
+				</section>
+				<section>
+				<section>
+				 <h3>Aligning Grid Tracks</h3>
+				 <p>align-content</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 align-content: start;
+						 }
+					 </code></pre>
+					 <img width="500" height="350" data-src="lib/img/align-content start.png" class="symbol_spaces" alt="Align Content Start">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Tracks</h3>
+				 <p>align-content</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 align-content: end;
+						 }
+					 </code></pre>
+					 <img width="500" height="350" data-src="lib/img/align-content end.png" class="symbol_spaces" alt="Align Content End">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Tracks</h3>
+				 <p>align-content</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 align-content: center;
+						 }
+					 </code></pre>
+					 <img width="500" height="350" data-src="lib/img/align-content center.png" class="symbol_spaces" alt="Align Content Center">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Tracks</h3>
+				 <p>align-content</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 align-content: space-around;
+						 }
+					 </code></pre>
+					 <img width="500" height="350" data-src="lib/img/align-content space-around.png" class="symbol_spaces" alt="Align Content Space Around">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Tracks</h3>
+				 <p>align-content</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 align-content: space-between;
+						 }
+					 </code></pre>
+					 <img width="500" height="350" data-src="lib/img/align-content space-between.png" class="symbol_spaces" alt="Align Content Space Between">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Tracks</h3>
+				 <p>align-content</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2">
+						 .parent {
+							 align-content: space-evenly;
+						 }
+					 </code></pre>
+					 <img width="500" height="350" data-src="lib/img/align-content space-evenly.png" class="symbol_spaces" alt="Align Content Space Evenly">
+				 </div>
+				</section>
+				<section>
+				 <h3>Aligning Grid Tracks</h3>
+				 <p>align-content</p>
+				 <div class="intro_section">
+					 <pre class="template"><code class="css" data-trim data-line-numbers="2,3">
+						 .parent {
+							 grid-gap: 1px;
+							 align-content: stretch;
+						 }
+					 </code></pre>
+					 <img width="500" height="350" data-src="lib/img/align-content stretch.png" class="symbol_spaces" alt="Align Content Stretch">
+				 </div>
+				</section>
+				</section>
+				<section data-background-iframe="https://caniuse.com/#feat=css-grid" data-background-interactive>
+					<div style="position: absolute; width: 100%; margin-top: -311px; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding-top: 11px; text-align: center;">
+					<h3>Browsers Support</h3>
+					</div>
+				</section>
+				<section>
+				 <h3>How should the layout look in browsers that don’t support Grid?</h3>
+				 <div class="fragment">
+					 <h4>Feature Queries</h4>
+					 <div class="intro_section">
+						 <pre class="template"><code class="css" data-trim data-line-numbers="2,3,10" class="fragment">
+				.parent {
+				 display: flex;
+				 flex-wrap: wrap;
+				 /* Rest of the fallback layout code */
+	   }
+
+
+				@supports (display: grid) {
+				 .parent {
+				  display: grid;
+				  /* Rest of the Grid code */
+				 }
+				}
+						 </code></pre>
+					 </div>
+				 </div>
+				</section>
+				<section data-background-iframe="https://cssgridgarden.com/" data-background-interactive>
+					<div style="position: absolute; width: 100%; margin-top: 650px; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding-top: 11px; text-align: center;">
+					<h3 style="margin: 0; font-size: 0.6em;">Grid game</h3>
+					</div>
+				</section>
+				<section>
+					<h3>Links</h3>
+					<ul>🇬🇧
+						<li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">Complete Guide to Grid on CSS Tricks</a></li>
+						<li><a href="https://gridbyexample.com/">Grid by Example by Rachel Andrew</a></li>
+						<li><a href="https://jonibologna.com/blog/spring-into-css-grid">Spring Into CSS Grid by Joni Trythall</a></li>
+						<li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/"> CSS Grid Generator by sarah_edo</a></li>
+						<li><a href="https://cssgrid.io/"> CSS Grid Courses by Wes Bos</a></li>
+					</ul>
+					<ul>🇷🇺
+						<li><a href="http://tpverstak.ru/grid/">Шпаргалка по Grid CSS</a></li>
+						<li><a href="https://medium.com/@stasonmars/%D0%B2%D0%B5%CC%88%D1%80%D1%81%D1%82%D0%BA%D0%B0-%D0%BD%D0%B0-grid-%D0%B2-css-%D0%BF%D0%BE%D0%BB%D0%BD%D0%BE%D0%B5-%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%B8-%D1%81%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%BD%D0%B8%D0%BA-220508316f8b">Вёрстка на Grid в CSS. Полное руководство и справочник</a></li>
+						<li><a href="https://html5book.ru/css-grid/"> Руководство по CSS Grid Layout</a></li>
+					</ul>
+				</section>
+        <section>
+					<h3>Thank you for your attention</h3>
+					<img src="https://i.giphy.com/media/14jgDMA1gGVVVS/giphy.webp" alt="">
+				</section>
+		</div>
+
+		<script src="reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
